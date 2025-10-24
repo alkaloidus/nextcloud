@@ -32,4 +32,5 @@ services:
       - MYSQL_USER=$db_user
       - MYSQL_HOST=db
       - NEXTCLOUD_TRUSTED_DOMAINS=$trust_domain
+      - NEXTCLOUD_TRUSTED_PROXIES=$trust_proxie
       - NEXTCLOUD_DOMAIN=$domain
