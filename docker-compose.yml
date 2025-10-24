@@ -17,9 +17,9 @@ services:
       - MYSQL_USER=$db_user
 
   app:
-    image: nextcloud:apache
+    image: nextcloud
     container_name: nextcloud
-    command: apache-foreground
+    # command: apache-foreground
     restart: always
     ports:
       - 8081:80
@@ -36,9 +36,9 @@ services:
       - MYSQL_USER=$db_user
       - MYSQL_HOST=db
       - REDIS_HOST=redis
-      - NEXTCLOUD_TRUSTED_DOMAINS=$trust_domain
-      - NEXTCLOUD_TRUSTED_PROXIES=$trust_proxie
-      - NEXTCLOUD_DOMAIN=$domain
+      # - NEXTCLOUD_TRUSTED_DOMAINS=$trust_domain
+      # - NEXTCLOUD_TRUSTED_PROXIES=$trust_proxie
+      # - NEXTCLOUD_DOMAIN=$domain
     env_file:
       - .env
   redis:
