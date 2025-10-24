@@ -39,6 +39,15 @@ services:
       # - NEXTCLOUD_TRUSTED_DOMAINS=$trust_domain
       # - NEXTCLOUD_TRUSTED_PROXIES=$trust_proxie
       # - NEXTCLOUD_DOMAIN=$domain
+      - OBJECTSTORE_S3_BUCKET=$bucket
+      - OBJECTSTORE_S3_REGION=ru-1  # Check reg.ru docs for exact region
+      - OBJECTSTORE_S3_HOST=$s3_endpoint  # or whatever reg.ru S3 endpoint is
+      - OBJECTSTORE_S3_PORT=443
+      - OBJECTSTORE_S3_KEY=$s3_access
+      - OBJECTSTORE_S3_SECRET=$s3_secret
+      - OBJECTSTORE_S3_SSL=true
+      - OBJECTSTORE_S3_USEPATH_STYLE=true  # Often needed for non-AWS S3
+      - OBJECTSTORE_S3_AUTOCREATE=true
     env_file:
       - .env
   redis:
