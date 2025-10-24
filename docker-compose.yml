@@ -5,6 +5,7 @@ volumes:
 services:
   db:
     image: mariadb:10.6
+    container_name: nextcloud_db
     restart: always
     command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
     volumes:
@@ -16,13 +17,15 @@ services:
       - MYSQL_USER=$db_user
 
   app:
-    image: nextcloud
+    image: nextcloud:apache
+    container_name: nextcloud
     command: apache-foreground
     restart: always
     ports:
       - 8081:80
     links:
       - db
+      - redis
     volumes:
       - nextcloud:/var/www/html
     environment:
@@ -32,6 +35,13 @@ services:
       - MYSQL_DATABASE=$db_name
       - MYSQL_USER=$db_user
       - MYSQL_HOST=db
+      - REDIS_HOST=redis
       - NEXTCLOUD_TRUSTED_DOMAINS=$trust_domain
       - NEXTCLOUD_TRUSTED_PROXIES=$trust_proxie
       - NEXTCLOUD_DOMAIN=$domain
+    env_file:
+      - .env
+  redis:
+    image: redis:alpine
+    container_name: nextcloud_redis
+    restart: always
