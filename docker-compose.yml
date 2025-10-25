@@ -36,9 +36,9 @@ services:
       - MYSQL_USER=$db_user
       - MYSQL_HOST=db
       - REDIS_HOST=redis
-      # - NEXTCLOUD_TRUSTED_DOMAINS=$trust_domain
-      # - NEXTCLOUD_TRUSTED_PROXIES=$trust_proxie
-      # - NEXTCLOUD_DOMAIN=$domain
+      - NEXTCLOUD_TRUSTED_DOMAINS=$trust_domain
+      - NEXTCLOUD_TRUSTED_PROXIES=$trust_proxie
+      - NEXTCLOUD_DOMAIN=$domain
       # - OBJECTSTORE_S3_BUCKET=$bucket
       # - OBJECTSTORE_S3_REGION=ru-1  # Check reg.ru docs for exact region
       # - OBJECTSTORE_S3_HOST=$s3_endpoint  # or whatever reg.ru S3 endpoint is
